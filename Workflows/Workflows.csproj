@@ -19,7 +19,7 @@ Added project site link to documentation.</PackageReleaseNotes>
         <PackageTags>workflows, wf</PackageTags>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Product>Workflows.NET</Product>
-        <SignAssembly>true</SignAssembly>
+        <SignAssembly>false</SignAssembly>
         <AssemblyOriginatorKeyFile>singing.pfx</AssemblyOriginatorKeyFile>
         <PackageLicenseUrl>https://raw.githubusercontent.com/delpher/SharedFiles/master/LICENSE</PackageLicenseUrl>
         <Version>1.0.1</Version>
