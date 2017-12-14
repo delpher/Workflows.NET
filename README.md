@@ -1,7 +1,7 @@
 # Workflows.NET
-[Workflows.NET project page](https://alex-onashyuk.azurewebsites.net/Projects/Workflows).
-[Get it from NuGet](https://www.nuget.org/packages/Workflows.NET)
-
+[Workflows.NET project page](https://alex-onashyuk.azurewebsites.net/Projects/Workflows).  
+[Get it from NuGet](https://www.nuget.org/packages/Workflows.NET)  
+  
 A simple library for executing sequential workfows defined in code. Supports dependencies management, rollback, crash and failure handling.
 
 ## Quick start
