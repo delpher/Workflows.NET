@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <DocumentationFile>bin\Debug\netstandard2.0\Workflows.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net40;net45;net46</TargetFrameworks>
+        <PackageId>Workflows.NET</PackageId>
+        <Authors>Alexey Onashchuk</Authors>
+        <Description>A simple library for executing sequential workfows defined in code.
+Supports dependencies management, rollback, crash and failure handling.</Description>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageReleaseNotes>Fixed issues with workflow execution.
+Workflow now terminates whenever step crashes.
+Added project site link to documentation.</PackageReleaseNotes>
+        <Copyright>Copyright 2017 (c) Alexey Onashyuk. All rights reserved.</Copyright>
+        <PackageTags>workflows, wf</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Product>Workflows.NET</Product>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>singing.pfx</AssemblyOriginatorKeyFile>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/delpher/SharedFiles/master/LICENSE</PackageLicenseUrl>
+        <Version>1.0.1</Version>
+        <PackageProjectUrl>https://alex-onashyuk.azurewebsites.net/Projects/Workflows</PackageProjectUrl>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
+        <FileVersion>1.0.1.0</FileVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <DocumentationFile>bin\Release\netstandard2.0\Workflows.xml</DocumentationFile>
+    </PropertyGroup>
+
+</Project>
