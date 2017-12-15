@@ -21,11 +21,14 @@ Added project site link to documentation.</PackageReleaseNotes>
         <Product>Workflows.NET</Product>
         <SignAssembly>false</SignAssembly>
         <AssemblyOriginatorKeyFile>singing.pfx</AssemblyOriginatorKeyFile>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/delpher/SharedFiles/master/LICENSE</PackageLicenseUrl>
-        <Version>1.0.1</Version>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/delpher/Workflows.NET/master/LICENSE</PackageLicenseUrl>
+        <Version>1.0.2</Version>
         <PackageProjectUrl>https://alex-onashyuk.azurewebsites.net/Projects/Workflows</PackageProjectUrl>
-        <AssemblyVersion>1.0.1.0</AssemblyVersion>
-        <FileVersion>1.0.1.0</FileVersion>
+        <AssemblyVersion>1.0.2.0</AssemblyVersion>
+        <FileVersion>1.0.2.0</FileVersion>
+        <PackageIconUrl></PackageIconUrl>
+        <RepositoryUrl>https://github.com/delpher/Workflows.NET</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
