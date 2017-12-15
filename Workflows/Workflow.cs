@@ -14,7 +14,7 @@ namespace Workflows
         private Action<Step<TCtx>, TCtx, Exception> _crashHandler;
         private Action<TCtx> _successHandler;
 
-        protected Workflow()
+        public Workflow()
         {
             _steps = new List<Step<TCtx>>();
             _failedSteps = new List<Step<TCtx>>();
