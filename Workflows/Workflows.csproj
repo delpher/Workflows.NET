@@ -1,12 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <TargetFramework>netstandard2.0</TargetFramework>
         <DocumentationFile>bin\Debug\netstandard2.0\Workflows.xml</DocumentationFile>
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net40;net45;net46</TargetFrameworks>
+        <TargetFrameworks>netstandard1.1;netstandard2.0;net40;net45;net46</TargetFrameworks>
         <PackageId>Workflows.NET</PackageId>
         <Authors>Alexey Onashchuk</Authors>
         <Description>A simple library for executing sequential workfows defined in code.

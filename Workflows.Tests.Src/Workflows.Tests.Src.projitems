@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>98c8a707-5ec0-4237-a49a-4802273f5a78</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Workflows.Tests.Src</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)TestDependencyDiscovery.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestWorkflow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TopologicalSortTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WorkflowDependencyTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WorkflowExecutionTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WorkflowStepsCreationTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WorkflowTestsBase.cs" />
+  </ItemGroup>
+</Project>
