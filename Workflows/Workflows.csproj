@@ -20,7 +20,7 @@ Added support for .NET Standard 1.1</PackageReleaseNotes>
         <SignAssembly>false</SignAssembly>
         <AssemblyOriginatorKeyFile>singing.pfx</AssemblyOriginatorKeyFile>
         <PackageLicenseUrl>https://raw.githubusercontent.com/delpher/Workflows.NET/master/LICENSE</PackageLicenseUrl>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
         <PackageProjectUrl>https://alex-onashyuk.azurewebsites.net/Projects/Workflows</PackageProjectUrl>
         <AssemblyVersion>1.0.3.0</AssemblyVersion>
         <FileVersion>1.0.3.0</FileVersion>
