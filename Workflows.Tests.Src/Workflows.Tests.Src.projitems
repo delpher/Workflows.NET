@@ -9,6 +9,7 @@
     <Import_RootNamespace>Workflows.Tests.Src</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)TestAdaptedSteps.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestDependencyDiscovery.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestWorkflow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TopologicalSortTests.cs" />

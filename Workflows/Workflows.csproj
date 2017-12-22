@@ -11,11 +11,10 @@
         <Description>A simple library for executing sequential workfows defined in code.
 Supports dependencies management, rollback, crash and failure handling.</Description>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageReleaseNotes>Fixed issues with workflow execution.
-Workflow now terminates whenever step crashes.
-Added project site link to documentation.</PackageReleaseNotes>
+        <PackageReleaseNotes>Added support of extending steps creation logic
+Added support for .NET Standard 1.1</PackageReleaseNotes>
         <Copyright>Copyright 2017 (c) Alexey Onashyuk. All rights reserved.</Copyright>
-        <PackageTags>workflows, wf</PackageTags>
+        <PackageTags>workflows, workflow, workflow-engine, wf</PackageTags>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Product>Workflows.NET</Product>
         <SignAssembly>false</SignAssembly>
@@ -23,8 +22,8 @@ Added project site link to documentation.</PackageReleaseNotes>
         <PackageLicenseUrl>https://raw.githubusercontent.com/delpher/Workflows.NET/master/LICENSE</PackageLicenseUrl>
         <Version>1.0.2</Version>
         <PackageProjectUrl>https://alex-onashyuk.azurewebsites.net/Projects/Workflows</PackageProjectUrl>
-        <AssemblyVersion>1.0.2.0</AssemblyVersion>
-        <FileVersion>1.0.2.0</FileVersion>
+        <AssemblyVersion>1.0.3.0</AssemblyVersion>
+        <FileVersion>1.0.3.0</FileVersion>
         <PackageIconUrl></PackageIconUrl>
         <RepositoryUrl>https://github.com/delpher/Workflows.NET</RepositoryUrl>
         <RepositoryType>git</RepositoryType>

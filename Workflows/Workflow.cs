@@ -105,14 +105,19 @@ namespace Workflows
         }
 
         public void Add<TStep>()
-            where TStep : Step<TCtx>
         {
             var stepType = typeof(TStep);
 
             if (_steps.Any(s=>s.GetType() == stepType))
                 throw new StepAlreadyIncludedException();
 
-            _steps.Add((Step<TCtx>) WorkflowServices.Instance.StepActivator.Create<TStep>());
+            _steps.Add(CreateStepInstance<TStep>());
+        }
+
+        private static Step<TCtx> CreateStepInstance<TStep>()
+        {
+            var instance = WorkflowServices.Instance.StepActivator.Create<TStep>();
+            return WorkflowServices.Instance.StepFactory.CreateFrom<TCtx>(instance);
         }
 
         internal void Skipped(Step<TCtx> step)

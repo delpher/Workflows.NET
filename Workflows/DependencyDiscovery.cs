@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Workflows
 {
-    internal static class DependencyDiscovery
+    public static class DependencyDiscovery
     {
         public static bool Requires(Type dependent, Type required)
         {

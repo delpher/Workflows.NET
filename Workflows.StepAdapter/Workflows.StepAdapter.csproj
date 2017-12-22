@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+      <TargetFrameworks>netstandard1.1;netstandard2.0;net40;net45;net46</TargetFrameworks>
+      <AssemblyName>Workflows.StepAdapter</AssemblyName>
+      <PackageId>Workflows.NET.StepAdapter</PackageId>
+      <Authors>Alexey Onashchuk</Authors>
+      <Company>Alexey Onashchuk</Company>
+      <Product>Workflows.NET</Product>
+      <Description>Extends Workflows.NET library to adapt steps that do not inherit from Step&lt;T&gt; class.
+Allows improved testability and less coupling to Workflows.NET library</Description>
+      <Copyright>Copyright 2017 (c) Alexey Onashyuk. All rights reserved.</Copyright>
+      <PackageLicenseUrl>https://raw.githubusercontent.com/delpher/Workflows.NET/master/LICENSE</PackageLicenseUrl>
+      <PackageProjectUrl>https://alex-onashyuk.azurewebsites.net/Projects/Workflows</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/delpher/Workflows.NET</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
+      <PackageTags>workflows, workflow, workflow-engine, wf</PackageTags>
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Workflows\Workflows.csproj" />
+  </ItemGroup>
+
+</Project>

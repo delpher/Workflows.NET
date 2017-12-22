@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Workflows.StepAdapter\Workflows.StepAdapter.csproj" />
     <ProjectReference Include="..\Workflows\Workflows.csproj" />
   </ItemGroup>
 

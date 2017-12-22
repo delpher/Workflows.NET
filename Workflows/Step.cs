@@ -49,13 +49,18 @@ namespace Workflows
 
         public bool Requires(Step<TCtx> step)
         {
-            var required = step.GetType();
-            return DependencyDiscovery.Requires(GetType(), required);
+            var required = step.GetStepType();
+            return DependencyDiscovery.Requires(GetStepType(), required);
+        }
+
+        protected virtual Type GetStepType()
+        {
+            return GetType();
         }
 
         public bool HasDependencies()
         {
-            return DependencyDiscovery.HasRequired(GetType());
+            return DependencyDiscovery.HasRequired(GetStepType());
         }
     }
 }

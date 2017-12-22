@@ -10,12 +10,15 @@
         {
             return new WorkflowServices
             {
-                StepActivator = new ReflectionStepActivator()
+                StepActivator = new ReflectionStepActivator(),
+                StepFactory = new DefaultStepFactory()
             };
         }
 
         private WorkflowServices() { }
 
         public IStepActivator StepActivator { get; set; }
+
+        public IStepFactory StepFactory { get; set; }
     }
 }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workflows.Tests.4.0", "Work
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Workflows.Tests.Src", "Workflows.Tests.Src\Workflows.Tests.Src.shproj", "{98C8A707-5EC0-4237-A49A-4802273F5A78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workflows.StepAdapter", "Workflows.StepAdapter\Workflows.StepAdapter.csproj", "{1C0CD9CF-A21E-4CCE-B003-68B25CD77427}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Workflows.Tests.Src\Workflows.Tests.Src.projitems*{98c8a707-5ec0-4237-a49a-4802273f5a78}*SharedItemsImports = 13
@@ -32,6 +34,10 @@ Global
 		{E874828C-3DFC-4E0E-B681-997CE470CDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E874828C-3DFC-4E0E-B681-997CE470CDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E874828C-3DFC-4E0E-B681-997CE470CDC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C0CD9CF-A21E-4CCE-B003-68B25CD77427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C0CD9CF-A21E-4CCE-B003-68B25CD77427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C0CD9CF-A21E-4CCE-B003-68B25CD77427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C0CD9CF-A21E-4CCE-B003-68B25CD77427}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
