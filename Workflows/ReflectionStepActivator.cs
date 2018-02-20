@@ -6,7 +6,12 @@ namespace Workflows
     {
         public object Create<TStep>()
         {
-            return (TStep) Activator.CreateInstance(typeof(TStep));
+            return (TStep) Create(typeof(TStep));
+        }
+
+        public object Create(Type stepType)
+        {
+            return Activator.CreateInstance(stepType);
         }
     }
 }

@@ -21,9 +21,10 @@ namespace Workflows
             }
         }
 
-        public static explicit operator Step<TCtx>(Type v)
+        public static explicit operator Step<TCtx>(Type stepType)
         {
-            throw new NotImplementedException();
+            return (Step<TCtx>) 
+                WorkflowServices.Instance.StepActivator.Create(stepType);
         }
 
         public void Rollback(TCtx context, Workflow<TCtx> workflow)

@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using Workflows.DependencyExplorer;
+using Xunit;
 
 namespace Workflows.Tests.Src
 {

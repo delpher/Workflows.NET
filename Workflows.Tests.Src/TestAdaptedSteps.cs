@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentAssertions;
 using NSubstitute;
+using Workflows.DependencyExplorer;
 using Workflows.StepAdapter;
 using Xunit;
 

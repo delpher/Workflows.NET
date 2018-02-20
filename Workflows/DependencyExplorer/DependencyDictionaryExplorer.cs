@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Workflows.DependencyExplorer;
 
-namespace Workflows
+namespace Workflows.DependencyExplorer
 {
     internal class DependencyDictionaryExplorer : IDependencyExplorer
     {
-        Dictionary<Type, DependencyCollection> _dependencyDictionary = new Dictionary<Type, DependencyCollection>();
+        readonly Dictionary<Type, DependencyCollection> _dependencyDictionary = new Dictionary<Type, DependencyCollection>();
 
         public IDependencyBuilder Step(Type step)
         {
@@ -25,10 +23,8 @@ namespace Workflows
                 return _dependencyDictionary[dependent].RequiredSteps.Any(x => x == required) ||
                        _dependencyDictionary[dependent].RequiredAnySteps.Any(x => x == required);
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public virtual bool HasRequired(Type dependent)
