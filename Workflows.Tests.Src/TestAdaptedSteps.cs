@@ -11,6 +11,7 @@ namespace Workflows.Tests
         private readonly TestWorkflow _workflow;
         private readonly ITestContext _context;
         private readonly ITestOutput _out;
+        private readonly IDependencyExplorer _dependencyExplorer = new DependencyAttributeExplorer();
 
         public TestAdaptedSteps()
         {
@@ -53,16 +54,18 @@ namespace Workflows.Tests
             var requiredAdapter = new StepAdapter<ITestContext>(new RequiredAdaptedStep());
             var dependentAdapter = new StepAdapter<ITestContext>(new DependentAdaptedStep());
 
-            dependentAdapter.Requires(requiredAdapter)
+            _dependencyExplorer.Requires(dependentAdapter.GetStepType(),
+                 requiredAdapter.GetStepType())
                 .Should().BeTrue("adapted steps has dependency defined");
 
-            dependentAdapter.Requires(new RequiredNotAdaptedStep())
+            _dependencyExplorer.Requires(dependentAdapter.GetStepType(), 
+                new RequiredNotAdaptedStep().GetStepType())
                 .Should().BeTrue();
 
-            new DependentNotAdaptedStep().Requires(requiredAdapter)
+            _dependencyExplorer.Requires(new DependentNotAdaptedStep().GetStepType(), requiredAdapter.GetStepType())
                 .Should().BeTrue();
 
-            dependentAdapter.HasDependencies().Should().BeTrue();
+            _dependencyExplorer.HasRequired(dependentAdapter.GetStepType()).Should().BeTrue();
         }
     }
 

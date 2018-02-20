@@ -4,25 +4,32 @@ using Workflows.Sorting;
 
 namespace Workflows
 {
-    internal static class DependencyGraphBuilder<T>
+    internal class DependencyGraphBuilder<T>
     {
-        public static IEnumerable<Edge<T>> BuildDependencyGraph(IList<T> nodes)
+        private readonly IDependencyExplorer _dependencyExplorer;
+
+        public DependencyGraphBuilder(IDependencyExplorer dependencyExplorer)
+        {
+            _dependencyExplorer = dependencyExplorer;
+        }
+
+        public IEnumerable<Edge<T>> BuildDependencyGraph(IList<T> nodes)
         {
             return nodes.SelectMany(node => GetRequirements(node, nodes)).ToArray();
         }
 
-        private static IEnumerable<Edge<T>> GetRequirements(T node, IEnumerable<T> nodes)
+        private IEnumerable<Edge<T>> GetRequirements(T node, IEnumerable<T> nodes)
         {
             var requirements = nodes
-                .Where(n=>HasDependency(node, n))
+                .Where(n=> HasDependency(node, n))
                 .Select(n => new Edge<T>(node, n))
                 .ToArray();
             return requirements;
         }
 
-        private static bool HasDependency(T from, T to)
+        private  bool HasDependency(T from, T to)
         {
-            return DependencyDiscovery.Requires(from.GetType(), to.GetType());
+            return _dependencyExplorer.Requires(from.GetType(), to.GetType());
         }
     }
 }

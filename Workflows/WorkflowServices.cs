@@ -1,4 +1,6 @@
-﻿namespace Workflows
+﻿using System.Collections.Generic;
+
+namespace Workflows
 {
     public class WorkflowServices : IWorkflowServices
     {
@@ -6,12 +8,17 @@
 
         public static IWorkflowServices Instance => _instance ?? (_instance = CreateInstance());
 
+        public List<IDependencyExplorer> DependencyExlorers { get; private set; }
+
         private static IWorkflowServices CreateInstance()
         {
             return new WorkflowServices
             {
                 StepActivator = new ReflectionStepActivator(),
-                StepFactory = new DefaultStepFactory()
+                StepFactory = new DefaultStepFactory(),
+                DependencyExlorers = new List<IDependencyExplorer>() {
+                    new DependencyAttributeExplorer()
+                }
             };
         }
 
@@ -20,5 +27,6 @@
         public IStepActivator StepActivator { get; set; }
 
         public IStepFactory StepFactory { get; set; }
+        
     }
 }

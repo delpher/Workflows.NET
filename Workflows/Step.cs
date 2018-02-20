@@ -21,6 +21,11 @@ namespace Workflows
             }
         }
 
+        public static explicit operator Step<TCtx>(Type v)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Rollback(TCtx context, Workflow<TCtx> workflow)
         {
             try
@@ -47,20 +52,9 @@ namespace Workflows
             throw new StepSkippedException();
         }
 
-        public bool Requires(Step<TCtx> step)
-        {
-            var required = step.GetStepType();
-            return DependencyDiscovery.Requires(GetStepType(), required);
-        }
-
-        protected virtual Type GetStepType()
+        protected internal virtual Type GetStepType()
         {
             return GetType();
-        }
-
-        public bool HasDependencies()
-        {
-            return DependencyDiscovery.HasRequired(GetStepType());
         }
     }
 }

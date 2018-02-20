@@ -10,7 +10,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)TestAdaptedSteps.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TestDependencyDiscovery.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestDependencyCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestDependencyDictionaryExplorer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestDependencyAttributeExplorer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestDependencyExplorer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestWorkflow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TopologicalSortTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WorkflowDependencyTests.cs" />

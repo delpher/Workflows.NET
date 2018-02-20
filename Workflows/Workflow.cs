@@ -10,6 +10,8 @@ namespace Workflows
         private readonly List<Step<TCtx>> _failedSteps;
         private readonly List<Step<TCtx>> _skippedSteps;
         private readonly List<Step<TCtx>> _passedSteps;
+        private readonly IDependencyExplorer _dependencyExplorer;
+        private readonly DependencyGraphBuilder<Step<TCtx>> _dependencyGraphBuilder;
 
         private Action<Step<TCtx>, TCtx, Exception> _crashHandler;
         private Action<TCtx> _successHandler;
@@ -20,13 +22,15 @@ namespace Workflows
             _failedSteps = new List<Step<TCtx>>();
             _skippedSteps = new List<Step<TCtx>>();
             _passedSteps = new List<Step<TCtx>>();
+            _dependencyExplorer = new DepenencyExplorer();
+            _dependencyGraphBuilder = new DependencyGraphBuilder<Step<TCtx>>(_dependencyExplorer);
         }
 
         public void Execute(TCtx context)
         {
             EnsureAllRequiredStepsPresent();
 
-            var orderedSteps = StepsSorter<TCtx>.OrderRequiredFirst(_steps);
+            var orderedSteps = StepsSorter<TCtx>.OrderRequiredFirst(_dependencyGraphBuilder, _steps);
 
             foreach (var step in orderedSteps)
                 try
@@ -64,15 +68,26 @@ namespace Workflows
 
         private void EnsureRequiredStepsPresent(Step<TCtx> step)
         {
-            if (step.HasDependencies() && !_steps.Any(step.Requires))
-                throw new MissingRequiredStepException(step.GetType());
+            if (HasRequiredDependencies(step) && 
+                !_steps.Any(s => RequiresDependency(step, s)))
+                    throw new MissingRequiredStepException(step.GetType());
+        }
+
+        private bool HasRequiredDependencies(Step<TCtx> step)
+        {
+            return _dependencyExplorer.HasRequired(step.GetStepType());
+        }
+
+        private bool RequiresDependency(Step<TCtx> step, Step<TCtx> s)
+        {
+            return _dependencyExplorer.Requires(step.GetStepType(), s.GetStepType());
         }
 
         private void ExecuteStep(TCtx context, Step<TCtx> step)
         {
-            if (_failedSteps.Any(step.Requires))
+            if (_failedSteps.Any(fs => RequiresDependency(step, fs)))
                 MarkFailed(step);
-            else if (_skippedSteps.Any(step.Requires))
+            else if (_skippedSteps.Any(fs => RequiresDependency(step, fs)))
                 MarkSkipped(step);
             else
                 step.Execute(context, this);

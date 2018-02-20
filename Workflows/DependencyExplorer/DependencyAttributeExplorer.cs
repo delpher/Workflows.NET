@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Workflows.DependencyExplorer;
 
 namespace Workflows
 {
-    public static class DependencyDiscovery
+    internal class DependencyAttributeExplorer : IDependencyExplorer
     {
-        public static bool Requires(Type dependent, Type required)
+        public virtual bool Requires(Type dependent, Type required)
         {
             return
                 GetRequiredAttributes(dependent).Any(a => a.DependsOn == required) ||
                 GetRequiresAnyAttributes(dependent).Any(a => a.DependsOn.Any(t => t == required));
         }
 
-        public static bool HasRequired(Type dependent)
+        public virtual bool HasRequired(Type dependent)
         {
             return GetRequiredAttributes(dependent).Any() ||
-                GetRequiresAnyAttributes(dependent).Any();
+                   GetRequiresAnyAttributes(dependent).Any();
         }
 
-        private static IEnumerable<RequiresAttribute> GetRequiredAttributes(Type type)
+        private IEnumerable<RequiresAttribute> GetRequiredAttributes(Type type)
         {
 #if NETSTANDARD1_1
             return type.GetTypeInfo()
@@ -33,7 +34,7 @@ namespace Workflows
 #endif
         }
 
-        private static IEnumerable<RequiresAnyAttribute> GetRequiresAnyAttributes(Type type)
+        private IEnumerable<RequiresAnyAttribute> GetRequiresAnyAttributes(Type type)
         {
 #if NETSTANDARD1_1
             return type.GetTypeInfo()
