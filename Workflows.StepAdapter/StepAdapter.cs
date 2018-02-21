@@ -10,7 +10,7 @@ namespace Workflows.StepAdapter
 
         static StepAdapter()
         {
-            WorkflowServices.Instance.StepFactory = new AdaptedStepsFactory();
+            WorkflowServices.StepFactory = new AdaptedStepsFactory();
         }
 
         public StepAdapter(object instance)

@@ -16,7 +16,7 @@ namespace Workflows.Tests
 
         public TestAdaptedSteps()
         {
-            WorkflowServices.Instance.StepFactory = new AdaptedStepsFactory();
+            WorkflowServices.StepFactory = new AdaptedStepsFactory();
             _workflow = new TestWorkflow();
             _context = Substitute.For<ITestContext>();
             _out = Substitute.For<ITestOutput>();

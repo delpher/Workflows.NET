@@ -5,29 +5,24 @@ namespace Workflows
 {
     public class WorkflowServices : IWorkflowServices
     {
-        private static IWorkflowServices _instance;
-
-        public static IWorkflowServices Instance => _instance ?? (_instance = CreateInstance());
-
-        public List<IDependencyExplorer> DependencyExlorers { get; private set; }
-
-        private static IWorkflowServices CreateInstance()
+        public static IWorkflowServices CreateInstance()
         {
             return new WorkflowServices
             {
-                StepActivator = new ReflectionStepActivator(),
-                StepFactory = new DefaultStepFactory(),
+                StepActivator = new ReflectionStepActivator(),                
                 DependencyExlorers = new List<IDependencyExplorer>() {
                     new DependencyAttributeExplorer()
                 }
             };
         }
 
-        private WorkflowServices() { }
-
+        private WorkflowServices() { }        
+        
         public IStepActivator StepActivator { get; set; }
 
-        public IStepFactory StepFactory { get; set; }
-        
+        public static IStepFactory StepFactory { get; set; } = new DefaultStepFactory();
+
+        public List<IDependencyExplorer> DependencyExlorers { get; private set; }
+
     }
 }

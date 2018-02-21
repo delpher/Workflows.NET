@@ -12,18 +12,24 @@ namespace Workflows
         private readonly List<Step<TCtx>> _passedSteps;
         private readonly IDependencyExplorer _dependencyExplorer;
         private readonly DependencyGraphBuilder<Step<TCtx>> _dependencyGraphBuilder;
+        private readonly IWorkflowServices _workflowServices;
 
         private Action<Step<TCtx>, TCtx, Exception> _crashHandler;
         private Action<TCtx> _successHandler;
 
-        public Workflow()
+        internal Workflow(IWorkflowServices workflowServices)
         {
             _steps = new List<Step<TCtx>>();
             _failedSteps = new List<Step<TCtx>>();
             _skippedSteps = new List<Step<TCtx>>();
             _passedSteps = new List<Step<TCtx>>();
-            _dependencyExplorer = new DepenencyExplorer();
+            _workflowServices = workflowServices;
+            _dependencyExplorer = new DepenencyExplorer(_workflowServices);
             _dependencyGraphBuilder = new DependencyGraphBuilder<Step<TCtx>>(_dependencyExplorer);
+        }
+
+        public Workflow() : this(WorkflowServices.CreateInstance())
+        {            
         }
 
         public void Execute(TCtx context)
@@ -119,6 +125,7 @@ namespace Workflows
             _failedSteps.Add(step);
         }
 
+        [Obsolete("Building workflow as separated object is obsolete. Use WorkflowFactory instead.")]
         public void Add<TStep>()
         {
             var stepType = typeof(TStep);
@@ -129,10 +136,29 @@ namespace Workflows
             _steps.Add(CreateStepInstance<TStep>());
         }
 
-        private static Step<TCtx> CreateStepInstance<TStep>()
+        internal void Add(Type stepType)
+        {           
+            if (_steps.Any(s => s.GetType() == stepType))
+                throw new StepAlreadyIncludedException();
+
+            _steps.Add(CreateStepInstance(stepType));
+        }
+
+        internal void Add(Step<TCtx> step)
         {
-            var instance = WorkflowServices.Instance.StepActivator.Create<TStep>();
-            return WorkflowServices.Instance.StepFactory.CreateFrom<TCtx>(instance);
+            _steps.Add(step);
+        }
+
+        private Step<TCtx> CreateStepInstance<TStep>()
+        {
+            var instance = _workflowServices.StepActivator.Create<TStep>();
+            return WorkflowServices.StepFactory.CreateFrom<TCtx>(instance);
+        }
+
+        private Step<TCtx> CreateStepInstance(Type type)
+        {
+            var instance = _workflowServices.StepActivator.Create(type);
+            return WorkflowServices.StepFactory.CreateFrom<TCtx>(instance);
         }
 
         internal void Skipped(Step<TCtx> step)

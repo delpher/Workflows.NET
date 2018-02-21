@@ -4,8 +4,7 @@ namespace Workflows
 {
     public interface IWorkflowServices
     {
-        IStepActivator StepActivator { get; set; }
-        IStepFactory StepFactory { get; set; }
+        IStepActivator StepActivator { get; set; }        
         List<IDependencyExplorer> DependencyExlorers { get; }
     }
 }

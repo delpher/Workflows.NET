@@ -21,12 +21,6 @@ namespace Workflows
             }
         }
 
-        public static explicit operator Step<TCtx>(Type stepType)
-        {
-            return (Step<TCtx>) 
-                WorkflowServices.Instance.StepActivator.Create(stepType);
-        }
-
         public void Rollback(TCtx context, Workflow<TCtx> workflow)
         {
             try
